@@ -45,6 +45,7 @@ function todoHandler(data,todayOrFuture=true,isCompleted=false){
     itemPriority.innerText=`Priority:${item.priority}`
     const activity =document.createElement("div");
     //activity.innerText=item.priority
+    activity.className="activity"
     const img1 =document.createElement("img");
     img1.src="./check-circle 1.png"
     img1.className=`${item._id}`
@@ -54,6 +55,9 @@ function todoHandler(data,todayOrFuture=true,isCompleted=false){
     if(!isCompleted){
     activity.appendChild(img1)
     activity.appendChild(img2);
+    }else{
+        activity.appendChild(img2);
+        img2.src="./2.png"
     }
     img1.addEventListener("click",function(){
         
@@ -64,18 +68,15 @@ function todoHandler(data,todayOrFuture=true,isCompleted=false){
             todaysTodoList=todaysTodoList.filter((el)=>el._id!==item._id)
             window.localStorage.setItem("todays-todolist",JSON.stringify(todaysTodoList))
         }
-        var completedTodoListNode =document.querySelector(".completed-section")
+        // var completedTodoListNode =document.querySelector(".completed-section")
         completedTodoList.push(item);
-        window.localStorage.setItem("completed-todolist",JSON.stringify(completedTodoList))
-        let node =document.getElementsByClassName(`incomplete-todos ${item._id}`)[0];
-        node.children[0].style.backgroundColor="white";
-        node.children[0].style.color="black";
-        node.children[0].style.border="1px solid black";
-        node.children[0].style.borderRadius="2px";
-        completedTodoListNode.appendChild(document.getElementsByClassName(`incomplete-todos ${item._id}`)[0])
+        window.localStorage.setItem("completed-todolist",JSON.stringify(completedTodoList));
+        todaysSection.removeChild(document.getElementsByClassName(`incomplete-todos ${item._id}`)[0])
+        todoHandler(completedTodoList,false,true);
     })
     img2.addEventListener("click",function(){
         todaysSection.removeChild(document.getElementsByClassName(`incomplete-todos ${item._id}`)[0])
+        
         if(!todayOrFuture){
             futureTodoList=futureTodoList.filter((el)=>el._id!==item._id)
             window.localStorage.setItem("future-todolist",JSON.stringify(futureTodoList))
@@ -83,6 +84,8 @@ function todoHandler(data,todayOrFuture=true,isCompleted=false){
             todaysTodoList=todaysTodoList.filter((el)=>el._id!==item._id)
             window.localStorage.setItem("todays-todolist",JSON.stringify(todaysTodoList))
         }
+        completedTodoList=completedTodoList.filter((el)=>el._id!==item._id)
+        window.localStorage.setItem("completed-todolist",JSON.stringify(completedTodoList))
     })
     row.appendChild(itemName)
     row.appendChild(itemDate)
