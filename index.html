@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <div class="main-container">
+      <div class="title-section">
+        <h1>To-Do List</h1>
+      </div>  
+      <div class="add-item-section">
+        <input type="text" class="item-name-input" placeholder="Item Name" />
+        <input type="date"  class="deadline-input" placeholder="Deadline" />
+        <select class="priority" name="priority">
+            <option value="High">High</option>
+            <option value="Medium">Medium</option>
+            <option value="Low">Low</option>
+          </select>
+        <button class="add-item-button" onclick="addItem()">Add Item</button>
+      </div>
+      <div class="todays-section">
+        <h2>Today's TodoList</h2>
+        
+      </div>
+      <div class="future-section">
+        <h2>Future TodoList</h2>
+      </div>
+      <div class="completed-section">
+        <h2>Completed TodoList</h2>
+      </div>
+    </div>
+    <script type="text/javascript" src="./script.js"></script>
+    <script>
+        const today = new Date().toISOString().split('T')[0];
+        document.querySelector('.deadline-input').min = `${today}`; 
+      </script>
+  </body>
+</html>

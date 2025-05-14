@@ -1,0 +1,65 @@
+.main-container{
+    padding: 50px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.title-section{
+    width: 100%;
+    text-align: center;
+}
+.add-item-section{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 40px;
+}
+.item-name-input{
+    width: 35%;
+}
+.deadline-input{
+    width: 25%;
+}
+.priority{
+    width: 25%;
+}
+.add-item-button{
+    width: 10%;
+    background-color: black;
+    color: white;
+}
+.incomplete-todos{
+    margin-left: 10px;
+    margin-bottom: 10px;
+}
+.row{
+    background-color: black;
+    width: 100%;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 10px;
+    color: white;
+    padding: 10px;
+}
+.item-name{
+    width: 40%;
+}
+.item-date{
+    width:30%
+}
+.item-priority{
+    width:20%
+}
+.activity{
+    width:10%;
+    text-align: right;
+}
+img{
+    width: 20px;
+    height:20px;
+    margin-right:10px
+}
+.completed-todos{
+    margin-left: 10px;
+    margin-bottom: 10px;
+}
